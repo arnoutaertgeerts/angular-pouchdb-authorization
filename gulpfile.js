@@ -11,13 +11,13 @@ gulp.task('minify', function () {
     return gulp.src('src/*.js')
         .pipe(ngAnnotate())
         .pipe(uglify())
-        .pipe(concat('angular-pouchdb-authentication.min.js'))
+        .pipe(concat('angular-pouchdb-authorization.min.js'))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('concat', function() {
     return gulp.src('src/*.js')
-        .pipe(concat('angular-pouchdb-authentication.js'))
+        .pipe(concat('angular-pouchdb-authorization.js'))
         .pipe(gulp.dest('dist'));
 });
 
