@@ -2,6 +2,14 @@
     'use strict';
 
     angular
+        .module('authorization',  [
+            'pouchdb'
+        ]);
+})();
+(function() {
+    'use strict';
+
+    angular
         .module('authorization')
         .factory('Access', Access);
 
@@ -157,12 +165,4 @@
         }        
     }
 
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('authorization',  [
-            'pouchdb'
-        ]);
 })();
