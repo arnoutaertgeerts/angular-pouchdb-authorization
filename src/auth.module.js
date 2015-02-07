@@ -15,6 +15,5 @@
             };
 
             pouchDBProvider.methods = angular.extend({}, POUCHDB_METHODS, authMethods);
-        })
-    ;
+        });
 })();

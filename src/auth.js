@@ -6,13 +6,13 @@
         .factory('Auth', Auth);
 
     Auth.$inject = [
-        'PouchDB',
+        'pouchDB',
         'Access'
     ];
 
-    function Auth(PouchDB, Access) {
-        var db = PouchDB();
-        
+    function Auth(pouchDB, Access) {
+        var db = null;
+
         var currentUser = { name: '', roles: ['anon']};
 
         function changeUser(user) {
@@ -20,12 +20,18 @@
         }
 
         return {
+            remote: remote,
             authorize: authorize,
             isLoggedIn: isLoggedIn,
             login: login,
-            logout: logout,            
+            logout: logout,
             user: currentUser
         };
+
+        //Setup the remote
+        function remote(url) {
+            db = pouchDB(url);
+        }
 
         //Authorize a route
         function authorize(accessLevel, roles) {
@@ -49,9 +55,9 @@
 
         //Log a user in
         function login(username, password) {
-            return db.login(username, password).then(function(response) {                
+            return db.login(username, password).then(function(response) {
                 currentUser.name = username;
-                angular.extend(currentUser, response);            
+                angular.extend(currentUser, response);
             });
         }
 
@@ -66,7 +72,7 @@
                     ]
                 });
             });
-        }        
+        }
     }
 
 })();
