@@ -2,7 +2,6 @@ node_modules/
 bower_components/
 .sass-cache/
 .tmp/
-dist/
 
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
